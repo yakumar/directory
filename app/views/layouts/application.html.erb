@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Directory</title>
+
+  <%= javascript_include_tag "vendor/modernizr" %>
+
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+<body>
+
+
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class ="row">
+
+	<%= link_to "Home", root_path, class: "button" %>
+
+
+	<% if user_signed_in? %>
+<%= link_to "Edit Profile", edit_user_registration_path, class: "button" %>
+<%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "button" %>
+<% else %>
+<%= link_to "Log in", new_user_session_path, class: "button" %>
+<%= link_to "Sign in", new_user_registration_path, class: "button" %>
+<% end %>
+
+<%= yield %>
+
+
+</div>
+
+</body>
+</html>
